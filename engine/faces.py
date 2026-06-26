@@ -20,7 +20,12 @@ def init_model(gpu=False):
         return
     import torch
     from facenet_pytorch import MTCNN, InceptionResnetV1
-    _DEVICE = "cuda" if (gpu and torch.cuda.is_available()) else "cpu"
+    if gpu and torch.cuda.is_available():
+        _DEVICE = "cuda"
+    elif gpu and getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available():
+        _DEVICE = "mps"
+    else:
+        _DEVICE = "cpu"
     _MTCNN = MTCNN(keep_all=True, device=_DEVICE)
     _RESNET = InceptionResnetV1(pretrained="vggface2").eval().to(_DEVICE)
 

@@ -24,12 +24,10 @@ echo.
 echo Installation des composants (plusieurs minutes ; le moteur de visages
 echo telecharge environ 200 Mo). Chaque composant est installe separement.
 echo.
-echo --- 1/3 : interface (pywebview)
+echo --- 1/2 : interface (pywebview)
 pip install pywebview
-echo --- 2/3 : moteur de visages (facenet-pytorch + torch)
-pip install facenet-pytorch
-echo --- 3/3 : photos iPhone (.heic)
-pip install pillow-heif
+echo --- 2/2 : moteur de visages (facenet-pytorch + torch)
+pip install facenet-pytorch "Pillow<10.3.0"
 
 echo.
 echo ============================================

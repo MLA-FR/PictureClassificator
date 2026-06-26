@@ -1,4 +1,4 @@
-import json, os, hashlib
+import json, os, sys, hashlib
 from pathlib import Path
 
 DEFAULT_SETTINGS = {
@@ -7,14 +7,19 @@ DEFAULT_SETTINGS = {
     "dossier_inconnus": "Inconnus",
     "dossier_sans_visage": "Sans visage",
     "dossier_erreurs": "Erreurs",
-    "heic": True,
+    "heic": False,
     "gpu": False,
     "max_noms": 6,
 }
 
 
 def data_dir():
-    base = os.environ.get("APPDATA") or os.path.expanduser("~/.config")
+    if sys.platform == "darwin":
+        base = os.path.expanduser("~/Library/Application Support")
+    elif os.name == "nt":
+        base = os.environ.get("APPDATA") or os.path.expanduser("~")
+    else:
+        base = os.environ.get("XDG_CONFIG_HOME") or os.path.expanduser("~/.config")
     d = Path(base) / "ClasseurPhotos"
     (d / "thumbs").mkdir(parents=True, exist_ok=True)
     return d
