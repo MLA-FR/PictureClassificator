@@ -1,0 +1,3 @@
+pywebview
+facenet-pytorch
+pillow-heif
