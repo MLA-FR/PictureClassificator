@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<title>Classeur de photos</title>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span> Classeur de photos</div>
+  <nav class="tabs">
+    <button class="tab active" data-tab="personnes">Personnes</button>
+    <button class="tab" data-tab="source">Source &amp; paramètres</button>
+    <button class="tab" data-tab="classement">Classement</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ONGLET PERSONNES -->
+  <section id="personnes" class="panel active">
+    <div class="row">
+      <h1>Personnes connues</h1>
+      <button class="btn primary" id="addPerson">+ Ajouter une personne</button>
+    </div>
+    <p class="hint">Donne un prénom et une ou plusieurs photos où l'on voit nettement la personne. Une seule suffit ; plusieurs (angles, lumière différents) améliorent la fiabilité.</p>
+    <div id="people" class="cards"></div>
+    <div id="peopleEmpty" class="empty">Aucune personne pour l'instant.</div>
+  </section>
+
+  <!-- ONGLET SOURCE -->
+  <section id="source" class="panel">
+    <h1>Dossier à classer</h1>
+    <div class="field">
+      <label>Dossier racine (sera parcouru, sous-dossiers inclus)</label>
+      <div class="pick"><input id="root" readonly placeholder="Aucun dossier choisi">
+        <button class="btn" id="pickRoot">Parcourir…</button></div>
+      <div id="count" class="hint"></div>
+    </div>
+    <div class="field">
+      <label>Dossier de sortie</label>
+      <div class="pick"><input id="out" placeholder="Choisis d'abord le dossier racine">
+        <button class="btn" id="pickOut">Parcourir…</button></div>
+    </div>
+    <div class="field">
+      <label>Que faire des fichiers</label>
+      <div class="seg">
+        <label><input type="radio" name="mode" value="copier" checked> Copier (recommandé)</label>
+        <label><input type="radio" name="mode" value="deplacer"> Déplacer</label>
+      </div>
+    </div>
+
+    <details class="adv">
+      <summary>Réglages avancés</summary>
+      <div class="field">
+        <label>Seuil de ressemblance : <b id="seuilVal">0.50</b></label>
+        <input type="range" id="seuil" min="0.30" max="0.70" step="0.02" value="0.50">
+        <div class="hint">Plus haut = plus strict (moins d'erreurs, plus d'« inconnus »). Plus bas = plus permissif. À ajuster selon tes photos ; relance l'aperçu après changement.</div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Dossier inconnus</label><input id="d_inc"></div>
+        <div class="field"><label>Dossier sans visage</label><input id="d_sv"></div>
+        <div class="field"><label>Dossier erreurs</label><input id="d_err"></div>
+      </div>
+      <label class="chk"><input type="checkbox" id="heic"> Prendre en charge les photos iPhone (.heic)</label>
+      <label class="chk"><input type="checkbox" id="gpu"> Utiliser le GPU si disponible (NVIDIA)</label>
+    </details>
+  </section>
+
+  <!-- ONGLET CLASSEMENT -->
+  <section id="classement" class="panel">
+    <h1>Classement</h1>
+    <p class="hint">L'aperçu analyse les visages sans rien copier et montre la répartition. Tu valides ensuite pour lancer le classement réel.</p>
+    <div class="row">
+      <button class="btn primary" id="apercu">Lancer l'aperçu</button>
+      <button class="btn ok" id="lancer" hidden>Lancer le classement</button>
+      <button class="btn" id="cancel" hidden>Annuler</button>
+    </div>
+
+    <div id="prog" class="prog" hidden>
+      <div class="bar"><div id="barFill"></div></div>
+      <div id="progTxt" class="hint"></div>
+    </div>
+
+    <div id="dist"></div>
+    <div id="report"></div>
+  </section>
+</main>
+
+<!-- MODALE CHOIX DE VISAGE -->
+<div id="modal" class="modal" hidden>
+  <div class="sheet">
+    <div class="row">
+      <h2>Quel visage est <span id="modalName">cette personne</span> ?</h2>
+      <button class="x" id="modalClose">✕</button>
+    </div>
+    <p class="hint">Clique le bon visage dans chaque photo (les photos à un seul visage sont déjà sélectionnées).</p>
+    <div id="faces" class="faces"></div>
+    <div class="row end">
+      <button class="btn" id="modalCancel">Annuler</button>
+      <button class="btn primary" id="modalSave">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
