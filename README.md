@@ -14,9 +14,8 @@ Toute la reconnaissance se fait sur ta machine : aucune photo ni empreinte ne qu
 
 ## Aperçu
 
-![Capture d'écran de l'application](docs/capture.png)
+![Capture d'écran de l'application](Capture.png)
 
-> Remplace `docs/capture.png` par ta propre capture.
 
 ---
 
