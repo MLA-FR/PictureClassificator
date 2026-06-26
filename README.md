@@ -6,9 +6,9 @@
 ![Plateforme](https://img.shields.io/badge/Windows%20%7C%20macOS-support%C3%A9-0078D6)
 ![Hors-ligne](https://img.shields.io/badge/traitement-100%25%20local-2ea44f)
 
-Tu déclares quelques personnes (un prénom + une ou deux photos de référence), tu indiques
-le dossier contenant tes photos, et l'application range chaque image dans le bon dossier.
-Toute la reconnaissance se fait sur ta machine : aucune photo ni empreinte ne quitte ton ordinateur.
+Ce programme classe les photos d'un disque physique en fonction des personnes présentes sur chaque photo.
+par exemple vous avez 2324 photos d'un mariage et vous souhaitez que vos connaissances soient chacune dans un répertoire spécifique qui leur est dédié.
+avec 2 ou 3 paramétrages simple, le programme va balayer vos 2324 photos et les classera dans les bons répertoires.
 
 ---
 
