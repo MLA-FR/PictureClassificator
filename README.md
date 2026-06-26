@@ -10,6 +10,10 @@ Ce programme classe les photos d'un disque physique en fonction des personnes pr
 par exemple vous avez 2324 photos d'un mariage et vous souhaitez que vos connaissances soient chacune dans un répertoire spécifique qui leur est dédié.
 avec 2 ou 3 paramétrages simple, le programme va balayer vos 2324 photos et les classera dans les bons répertoires.
 
+IMPORTANT : la reconnaissance faciale n'utilise aucune IA en ligne. votre PC peut être déconnecté du WEB. le programme fonctionnera quand meme.
+Il est cependant nécessaire d'avoir une connexion web pour l'installation la première fois.
+Ce programme a été entièrement généré par Claude.ai (aprés quelques ajustements à la marge)
+
 ---
 
 ## Aperçu
